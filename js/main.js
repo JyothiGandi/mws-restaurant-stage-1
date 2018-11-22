@@ -157,25 +157,37 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
+  li.setAttribute('role', 'listitem');
+  li.setAttribute('aria-label', 'Restaurant');
 
   const image = document.createElement('img');
+  image.setAttribute('role', 'Img');
+  image.setAttribute('aria-label', 'Restaurant image');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
   const name = document.createElement('h1');
+  name.setAttribute('role', 'banner');
+  image.setAttribute('aria-label', restaurant.name);
   name.innerHTML = restaurant.name;
   li.append(name);
 
   const neighborhood = document.createElement('p');
+  neighborhood.setAttribute('role', 'region');
+  neighborhood.setAttribute('aria-label', 'Restaurant located in');
   neighborhood.innerHTML = restaurant.neighborhood;
   li.append(neighborhood);
 
   const address = document.createElement('p');
+  address.setAttribute('role', 'region');
+  image.setAttribute('aria-label', 'Restaurant address');
   address.innerHTML = restaurant.address;
   li.append(address);
 
   const more = document.createElement('a');
+  more.setAttribute('role', 'navigation');
+  more.setAttribute('aria-label', 'Link to restaurant detail page');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
   more.tabIndex = 3;
