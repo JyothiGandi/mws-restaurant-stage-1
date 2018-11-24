@@ -222,3 +222,17 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+
+_registerServiceWorker = function() {
+  console.log('navigator', navigator);
+  if (!navigator.serviceWorker) return;
+
+  navigator.serviceWorker.register('/sw.js').then(function(reg) {
+    if (!navigator.serviceWorker.controller) {
+      return;
+    }
+  });
+
+
+};
+_registerServiceWorker();
