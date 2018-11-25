@@ -223,16 +223,22 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 } */
 
 
+/**
+ * Service worker
+ * @private
+ */
 _registerServiceWorker = function() {
-  console.log('navigator', navigator);
   if (!navigator.serviceWorker) return;
 
-  navigator.serviceWorker.register('/sw.js').then(function(reg) {
-    if (!navigator.serviceWorker.controller) {
-      return;
-    }
-  });
-
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then(function(reg) {
+      console.log('service worker registered');
+    })
+    .catch(err => {
+      console.log('service worker registration error');
+      console.log(err);
+    });
 
 };
 _registerServiceWorker();
